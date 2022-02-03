@@ -15,6 +15,6 @@ public interface ClaseService {
     // MODIFICAR CLASES
 
     // BORRAR CLASES
-    Cliente deleteCliente(long id);
+    Clase deleteClase(long id);
 	//// COMENTARIO PRUEBA ////
 }
