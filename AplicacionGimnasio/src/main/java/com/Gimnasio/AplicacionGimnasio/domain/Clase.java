@@ -37,8 +37,11 @@ public class Clase {
     private List<Reserva> reservaList = new ArrayList<>();
 */
 
+    public Long getId_clase() {
+        return id_clase;
+    }
 
-
-
-
+    public void setId_clase(Long id_clase) {
+        this.id_clase = id_clase;
+    }
 }
