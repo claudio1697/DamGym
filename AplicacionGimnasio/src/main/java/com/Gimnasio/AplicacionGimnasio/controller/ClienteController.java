@@ -35,7 +35,6 @@ public class ClienteController {
         return new ResponseEntity<>(cliente, HttpStatus.OK);
     }
 
-
     // BUSCAR CLASE POR ID
     @GetMapping("/cliente/{id}")
     public ResponseEntity<Cliente> getClienteId(@PathVariable long id) {
@@ -44,8 +43,20 @@ public class ClienteController {
         return new ResponseEntity<>(cliente, HttpStatus.OK);
     }
 
+    // AÑADIDO ESTO @Fede
+    // MODIFICAR CLIENTE
+    @PutMapping("/cliente/{id}")
+    public ResponseEntity<Cliente> modifyCliente(@PathVariable long id,
+                                                 @RequestBody Cliente newCliente) {
+        Cliente cliente = clienteService.modificationeCLiente(id, newCliente);
+        return new ResponseEntity<>(cliente, HttpStatus.OK);
+    }
 
-
-
+    //BORRAR CLIENTE
+    @DeleteMapping("/cliente/{id}")
+    public void deleteCliente(@PathVariable long id){
+        clienteService.deleteCliente(id);
+    }
+    // HASTA AQUI
 
 }
