@@ -9,10 +9,13 @@ public interface ClienteService {
 
     // INTRODUCIR CLIENTE
     Cliente anyadirClienteBD(Cliente cliente);
+
     //ENCONTRAR POR ID
     Optional<Cliente> findById(long id);
+
     //MODIFICAR CLIENTE
     Cliente modificationeCLiente(long id, Cliente nueboCliente);
+
     //BORRAR CLIENTE
-    Cliente deleteCliente(long id);
+    void deleteCliente(long id);
 }

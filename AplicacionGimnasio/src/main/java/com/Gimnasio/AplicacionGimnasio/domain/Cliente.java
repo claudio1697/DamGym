@@ -40,4 +40,13 @@ public class Cliente {
    // @OneToMany(mappedBy = "clientes", cascade = CascadeType.PERSIST)
     //Sacamos la lista del ToString de aqui
     //private List<Reserva> reservasList = new ArrayList<>();
+
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 }

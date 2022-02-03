@@ -3,14 +3,26 @@ package com.Gimnasio.AplicacionGimnasio.service;
 import com.Gimnasio.AplicacionGimnasio.domain.Clase;
 import com.Gimnasio.AplicacionGimnasio.domain.Reserva;
 
+import java.util.Optional;
 import java.util.Set;
 
 public interface ReservaService {
 
-    Set<Reserva> findAll();
+
+    // CREAR RESERVA
     Reserva anyadirReservaBD(Reserva reserva);
-    Reserva modificationeReserva(long id, Reserva reserva);
-    //Cambios que he realizado @Claudio
+
+    //BUSCAR TODAS LAS RESERVAS
+    Set<Reserva> findAll();
+
+    // BUSCAR POR ID
     Optional<Reserva> findById(long id);
+
+    //MODIFICAR RESERVAS
+    Reserva modificarReserva(long id, Reserva reserva);
+
+    //ELIMINAR RESERVA
     void deleteReserva(long id);
+
+
 }

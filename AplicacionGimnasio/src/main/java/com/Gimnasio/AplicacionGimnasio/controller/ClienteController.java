@@ -1,13 +1,15 @@
 package com.Gimnasio.AplicacionGimnasio.controller;
 
+import com.Gimnasio.AplicacionGimnasio.domain.Clase;
 import com.Gimnasio.AplicacionGimnasio.domain.Cliente;
+import com.Gimnasio.AplicacionGimnasio.excepcion.claseNotFoundException;
 import com.Gimnasio.AplicacionGimnasio.service.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Set;
 
 @RestController
 
@@ -15,16 +17,7 @@ public class ClienteController {
 
     @Autowired
     private ClienteService clienteService;
-    
-    //He hecho esto @Sergio
-    //BUCAR CLIENTE
-    @GetMapping("/cliente")
-    public ResponseEntity<Set<Cliente>> getCliente() {
-        Set<Cliente> cliente = null;
-        cliente = clienteService.findAll();
-        return new ResponseEntity<>(cliente, HttpStatus.OK);
-    }
-    //hasta aqui
+
     
     // ANYADIR CLIENTE
     @PostMapping("/cliente")
@@ -33,5 +26,26 @@ public class ClienteController {
         Cliente clienteAnyadido = clienteService.anyadirClienteBD(cliente);
         return new ResponseEntity<>(clienteAnyadido, HttpStatus.OK);
     }
+
+    //BUCAR TODOS LOS CLIENTES
+    @GetMapping("/cliente")
+    public ResponseEntity<Set<Cliente>> getCliente() {
+        Set<Cliente> cliente = null;
+        cliente = clienteService.findAll();
+        return new ResponseEntity<>(cliente, HttpStatus.OK);
+    }
+
+
+    // BUSCAR CLASE POR ID
+    @GetMapping("/cliente/{id}")
+    public ResponseEntity<Cliente> getClienteId(@PathVariable long id) {
+        Cliente cliente = clienteService.findById(id)
+                .orElseThrow(() -> new claseNotFoundException(id));
+        return new ResponseEntity<>(cliente, HttpStatus.OK);
+    }
+
+
+
+
 
 }
