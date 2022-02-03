@@ -13,7 +13,7 @@ public interface ClaseService {
     Clase anyadirClaseBD(Clase clase);
 
     // MODIFICAR CLASES
-
+    Clase modificationeClase(long id, Clase nuebaClase);	
     // BORRAR CLASES
     Clase deleteClase(long id);
 	//// COMENTARIO PRUEBA ////
