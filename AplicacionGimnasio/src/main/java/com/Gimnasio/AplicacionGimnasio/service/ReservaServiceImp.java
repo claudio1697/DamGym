@@ -30,4 +30,11 @@ public class ReservaServiceImp implements ReservaService {
         nueboReserva.setId(reserva.getId());
         return reservaRepository.save(nueboReserva);
     }
+    //Cambios que he realizado @Claudio
+     @Override
+    public void deleteReserva(long id) {
+        reservaRepository.findById(id)
+                .orElseThrow(() -> new reservaNotFoundExcepcion(id));
+        reservaRepository.deleteById(id);
+    }//Aqui termina los cambios que he realizado @Claudio
 }
