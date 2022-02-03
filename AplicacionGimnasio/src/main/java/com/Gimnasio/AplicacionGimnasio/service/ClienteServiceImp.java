@@ -44,10 +44,9 @@ public class ClienteServiceImp implements ClienteService {
 
     // Añadido metodo de borrado cliente @Fede
     @Override
-    public Cliente deleteCliente(long id) {
+    public void deleteCliente(long id) {
         clienteRepository.findById(id)
                 .orElseThrow(() -> new clienteNotFoundExcepcion(id));
         clienteRepository.deleteById(id);
-        return null;
     }
 }
