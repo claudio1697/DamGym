@@ -15,7 +15,17 @@ public class ClienteController {
 
     @Autowired
     private ClienteService clienteService;
-
+    
+    //He hecho esto @Sergio
+    //BUCAR CLIENTE
+    @GetMapping("/cliente")
+    public ResponseEntity<Set<Cliente>> getCliente() {
+        Set<Cliente> cliente = null;
+        cliente = clienteService.findAll();
+        return new ResponseEntity<>(cliente, HttpStatus.OK);
+    }
+    //hasta aqui
+    
     // ANYADIR CLIENTE
     @PostMapping("/cliente")
     public ResponseEntity<Cliente> anyadirCliente(@RequestBody Cliente cliente){
