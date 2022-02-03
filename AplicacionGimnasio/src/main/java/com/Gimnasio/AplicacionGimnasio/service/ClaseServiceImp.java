@@ -23,7 +23,16 @@ public class ClaseServiceImp implements ClaseService{
     public Clase anyadirClaseBD(Clase clase){
         return claseRepository.save(clase);
     }
+    //He añadido el metodo modificar Clase @Sergio
+    @Override
+    public Clase modificarClase(long id_clase,Clase newClase){
 
+        Clase clase = claseRepository.findById(id_clase).orElseThrow(() -> new claseNotFoundException(id_clase));
+        newClase.setId_clase(clase.getId_clase());
+        return claseRepository.save(newClase);
+
+    }//hasta aqui
+    
     // Añadido metodo de borrado cliente @Fede
     @Override
     public void deleteCliente(long id) {
