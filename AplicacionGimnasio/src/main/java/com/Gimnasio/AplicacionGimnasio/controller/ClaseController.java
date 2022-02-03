@@ -38,6 +38,15 @@ public class ClaseController {
         Clase claseAnyadida = claseService.anyadirClaseBD(clase);
         return new ResponseEntity<>(claseAnyadida, HttpStatus.OK);
     }
+    
+    // MODIFICAR CLASE ( PUT)
+    // metodo creado Sergio
+    @PutMapping("/clase/{id_clase}")
+    public ResponseEntity<Clase> modifyClase(@PathVariable long id_clase,@RequestBody Clase claseModificada){
+        Clase clase = claseService.modificarClase(id_clase,claseModificada);
+        return new ResponseEntity<>(clase,HttpStatus.OK);
+
+    }
 
 
 
