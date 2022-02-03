@@ -19,17 +19,16 @@ public class ClaseController {
 
     @Autowired
     private ClaseService claseService;
-
+    
+   //He hecho esto @Sergio
     // OBTENER TODAS LAS CLASES
-/*
-
-    @GettingMapping("/clase")
-    public ResponseEntity<Set<Clase>> getClases(@RequestParam(value = "",defaultValue = "")String clase){
-
-        clase = claseService.findAll();
-        return new ResponseEntity<>(clase,HttpStatus.OK);
+    @GetMapping("/clase")
+    public ResponseEntity<Set<Clase>> getProducts() {
+        Set<Clase> clase = null;
+            clase = claseService.findAll();
+        return new ResponseEntity<>(clase, HttpStatus.OK);
     }
-*/
+    //hasta aqui
 
 
 
