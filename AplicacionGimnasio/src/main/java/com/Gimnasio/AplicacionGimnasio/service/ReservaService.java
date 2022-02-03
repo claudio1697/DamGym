@@ -11,5 +11,6 @@ public interface ReservaService {
     Reserva anyadirReservaBD(Reserva reserva);
     Reserva modificationeReserva(long id, Reserva reserva);
     //Cambios que he realizado @Claudio
+    Optional<Reserva> findById(long id);
     void deleteReserva(long id);
 }
