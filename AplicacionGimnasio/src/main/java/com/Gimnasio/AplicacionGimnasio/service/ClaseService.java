@@ -12,8 +12,9 @@ public interface ClaseService {
     // INTRODUCIR CLASES
     Clase anyadirClaseBD(Clase clase);
 
-    // MODIFICAR CLASES
-    Clase modificationeClase(long id, Clase nuebaClase);	
+    // MODIFICAR CLASES 
+    //Metodo de Modificar @Sergio 	
+    Clase modificarClase(long id, Clase nuebaClase);	
     // BORRAR CLASES
     Clase deleteClase(long id);
 	//// COMENTARIO PRUEBA ////
