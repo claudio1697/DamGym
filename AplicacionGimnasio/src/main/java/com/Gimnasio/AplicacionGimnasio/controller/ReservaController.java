@@ -14,7 +14,18 @@ public class ReservaController {
 
     @Autowired
     private ReservaService reservaService;
-
+    
+    //He hecho esto  @Sergio
+    // RESERVA
+    // OBTENER TODAS LAS CLASES
+    @GetMapping("/reserva")
+    public ResponseEntity<Set<Reserva>> getProducts() {
+        Set<Reserva> reserva = null;
+        reserva = reservaService.findAll();
+        return new ResponseEntity<>(reserva, HttpStatus.OK);
+    }
+    //hasta aqui
+    
     // ANYADIR RESERVA (POST)
 
     @PostMapping("/reserva")
