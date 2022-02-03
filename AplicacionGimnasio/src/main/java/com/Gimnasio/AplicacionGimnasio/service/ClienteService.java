@@ -13,4 +13,6 @@ public interface ClienteService {
     Optional<Cliente> findById(long id);
     //MODIFICAR CLIENTE
     Cliente modificationeCLiente(long id, Cliente nueboCliente);
+    //BORRAR CLIENTE
+    Cliente deleteCliente(long id);
 }
