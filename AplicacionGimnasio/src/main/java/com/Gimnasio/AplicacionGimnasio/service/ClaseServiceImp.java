@@ -18,6 +18,11 @@ public class ClaseServiceImp implements ClaseService{
     public Set<Clase> findAll() {
         return claseRepository.findAll();
     }
+    //BUSCAR POR ID @Sergio
+    @Override
+    public Optional<Clase> findById(long id){
+        return claseRepository.findById(id);
+    }
 
     @Override
     public Clase anyadirClaseBD(Clase clase){
@@ -35,7 +40,7 @@ public class ClaseServiceImp implements ClaseService{
     
     // Añadido metodo de borrado cliente @Fede
     @Override
-    public void deleteCliente(long id) {
+    public void deleteClase(long id) {
         claseRepository.findById(id)
                 .orElseThrow(() -> new claseNotFoundExcepcion(id));
         claseRepository.deleteById(id);
