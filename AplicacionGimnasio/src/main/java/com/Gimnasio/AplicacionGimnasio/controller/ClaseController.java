@@ -29,6 +29,15 @@ public class ClaseController {
         return new ResponseEntity<>(clase, HttpStatus.OK);
     }
     //hasta aqui
+    
+    // BUSCAR CLASE POR ID
+       @Sergio
+    @GetMapping("/clase/{id}")
+    public ResponseEntity<Clase> getClaseId(@PathVariable long id) {
+        Clase clase = claseService.findById(id)
+                .orElseThrow(() -> new claseNotFoundException(id));
+        return new ResponseEntity<>(clase, HttpStatus.OK);
+    }
 
 
 
