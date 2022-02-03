@@ -24,4 +24,11 @@ public class ClaseServiceImp implements ClaseService{
         return claseRepository.save(clase);
     }
 
+    // Añadido metodo de borrado cliente @Fede
+    @Override
+    public void deleteCliente(long id) {
+        claseRepository.findById(id)
+                .orElseThrow(() -> new claseNotFoundExcepcion(id));
+        claseRepository.deleteById(id);
+    }
 }
