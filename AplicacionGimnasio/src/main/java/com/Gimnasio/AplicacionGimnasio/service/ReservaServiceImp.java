@@ -30,6 +30,11 @@ public class ReservaServiceImp implements ReservaService {
         nueboReserva.setId(reserva.getId());
         return reservaRepository.save(nueboReserva);
     }
+    // Metodo de busqueda por ID @Claudio
+    @Override
+    public Optional<Reserva> findById(long id){
+        return reservaRepository.findById(id);
+    }
     //Cambios que he realizado @Claudio
      @Override
     public void deleteReserva(long id) {
