@@ -11,11 +11,8 @@ public interface ClaseService {
 
     // INTRODUCIR CLASES
     Clase anyadirClaseBD(Clase clase);
-    //BUSCAR POR ID @Sergio
-    @Override
-    public Optional<Clase> findById(long id){
-        return claseRepository.findById(id);
-    }	
+     // BUSCAR POR ID @Sergio
+    Optional<Clase> findById(long id);	
 	
     // MODIFICAR CLASES 
     //Metodo de Modificar @Sergio 	
