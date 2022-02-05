@@ -36,11 +36,11 @@ public class ClienteController {
     }
 
 
-    // BUSCAR CLASE POR ID
+    // BUSCAR CLIENTE POR ID
     @GetMapping("/cliente/{id}")
     public ResponseEntity<Cliente> getClienteId(@PathVariable long id) {
         Cliente cliente = clienteService.findById(id)
-                .orElseThrow(() -> new claseNotFoundException(id));
+                .orElseThrow(() -> new clienteNotFoundException(id));
         return new ResponseEntity<>(cliente, HttpStatus.OK);
     }
     
