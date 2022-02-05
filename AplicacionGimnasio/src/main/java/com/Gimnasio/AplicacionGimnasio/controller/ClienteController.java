@@ -43,6 +43,17 @@ public class ClienteController {
                 .orElseThrow(() -> new claseNotFoundException(id));
         return new ResponseEntity<>(cliente, HttpStatus.OK);
     }
+    
+     // MODIFICAR CLIENTE PUT
+    @PutMapping("/cliente/{id}")
+    public ResponseEntity<Cliente> modifyClient(@PathVariable long id,@RequestBody Cliente clienteModificado){
+        Cliente cliente = clienteService.modifyCliente(id,clienteModificado);
+        return new ResponseEntity<>(cliente,HttpStatus.OK);
+    }
+
+    // ELIMINAR CLIENTE
+    @DeleteMapping("/cliente/{id}")
+    public void deleteClient(@PathVariable long id){clienteService.deleteCliente(id);}
 
 
 
