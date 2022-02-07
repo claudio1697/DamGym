@@ -4,6 +4,10 @@ package com.Gimnasio.AplicacionGimnasio.controller;
 import com.Gimnasio.AplicacionGimnasio.domain.Clase;
 import com.Gimnasio.AplicacionGimnasio.excepcion.claseNotFoundException;
 import com.Gimnasio.AplicacionGimnasio.service.ClaseService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,11 +21,15 @@ public class ClaseController {
 
     @Autowired
     private ClaseService claseService;
-    
-   //He hecho esto @Sergio
 
+   //Anyadiendo el @Operation calaudio
+    @Operation(summary = "Registro de nueva Clase en la app")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "Se registra la clase", content = @Content)
+    })
+   //He hecho esto @Sergio
     // ANYADIR CLASES (POST)
-    @PostMapping("/clase")
+    @PostMapping(value = "/clase", produces = "application/json", consumes = "application/json")
     public ResponseEntity<Clase> anyadirClase(@RequestBody Clase clase){
         Clase claseAnyadida = claseService.anyadirClaseBD(clase);
         return new ResponseEntity<>(claseAnyadida, HttpStatus.OK);
