@@ -35,11 +35,12 @@ public class Reserva {
     //Variable emf que se encarga de organizar las relaciones
    // private static EntityManagerFactory emf;
     //Relacion de Muchas reservas a un cliente
-    //@ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     //Llamada para finalizar la relacion Cliente-Reserva
-    //private Cliente clientes;
+    private Cliente clientes;
+
     //Relacion de muchos a 1 de Reserva-Clase
-    //@ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     //private Clase clase;
 
 

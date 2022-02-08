@@ -55,7 +55,7 @@ public class ClaseController {
         @ApiResponse(responseCode = "404", description = "La clase no existe", content = @Content(schema =  @Schema(implementation = Response.class)))
     })
     // BUSCAR CLASE POR ID
-    @GetMapping("/clase/{id}")
+    @GetMapping(value = "/clase/{id}", produces = "application/json")
     public ResponseEntity<Clase> getClaseId(@PathVariable long id) {
         Clase clase = claseService.findById(id)
                 .orElseThrow(() -> new claseNotFoundException(id));

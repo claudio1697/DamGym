@@ -37,9 +37,9 @@ public class Cliente {
     //Variable emf que se encarga de organizar las relaciones
  //   private static EntityManagerFactory emf;
     //Relacion de 1 a muchos de clientes a Reserva
-   // @OneToMany(mappedBy = "clientes", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "clientes", cascade = CascadeType.PERSIST)
     //Sacamos la lista del ToString de aqui
-    //private List<Reserva> reservasList = new ArrayList<>();
+    private List<Reserva> reservasList = new ArrayList<>();
 
 
     public Long getId() {

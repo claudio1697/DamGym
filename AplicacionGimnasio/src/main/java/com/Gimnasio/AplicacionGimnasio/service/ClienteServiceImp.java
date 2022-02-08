@@ -35,7 +35,7 @@ public class ClienteServiceImp implements ClienteService {
     }
 
     @Override
-    public Cliente modificationeCLiente(long id, Cliente nueboCliente) {
+    public Cliente modificarCliente(long id, Cliente nueboCliente) {
         Cliente cliente =clienteRepository.findById(id)
                 .orElseThrow(() -> new clienteNotFoundExcepcion(id));
         nueboCliente.setId(cliente.getId());
