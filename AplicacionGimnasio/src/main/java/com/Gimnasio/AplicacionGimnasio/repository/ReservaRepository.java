@@ -1,6 +1,6 @@
 package com.Gimnasio.AplicacionGimnasio.repository;
 
-import com.Gimnasio.AplicacionGimnasio.domain.Clase;
+
 import com.Gimnasio.AplicacionGimnasio.domain.Reserva;
 import org.springframework.data.repository.CrudRepository;
 

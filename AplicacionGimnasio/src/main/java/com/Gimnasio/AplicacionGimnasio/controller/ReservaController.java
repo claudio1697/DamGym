@@ -1,6 +1,6 @@
 package com.Gimnasio.AplicacionGimnasio.controller;
 
-import com.Gimnasio.AplicacionGimnasio.domain.Clase;
+
 import com.Gimnasio.AplicacionGimnasio.domain.Reserva;
 import com.Gimnasio.AplicacionGimnasio.excepcion.claseNotFoundException;
 import com.Gimnasio.AplicacionGimnasio.service.ReservaService;
