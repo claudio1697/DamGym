@@ -35,7 +35,7 @@ public class Clase {
     private String descripcion;
     ///QUIZA HAYA ERROR// @SERGIOABDOMINALES
 //////////RELACIONES COMENTADAS POR POSIBLE ERROR//////////
-   @OneToMany(mappedBy = "reserva", cascade = CascadeType.PERSIST)
+   @OneToMany(mappedBy = "clase", cascade = CascadeType.PERSIST)
     private List<Reserva> reservaList = new ArrayList<>();
 
 
