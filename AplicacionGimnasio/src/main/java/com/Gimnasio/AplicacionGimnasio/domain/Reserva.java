@@ -30,17 +30,16 @@ public class Reserva {
     @JsonFormat(pattern = "HH:mm:ss")
     private LocalTime hora;
 
-//////////RELACIONES COMENTADAS POR POSIBLE ERROR//////////
-    //Variable emf que se encarga de organizar las relaciones
-   // private static EntityManagerFactory emf;
-    //Relacion de Muchas reservas a un cliente
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
-    //Llamada para finalizar la relacion Cliente-Reserva
-    private Cliente clientes;
-
-    //Relacion de muchos a 1 de Reserva-Clase
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "clase_id")
     private Clase clase;
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "cliente_id")
+    private Cliente cliente;
+
+
+
 
 
     public Long getId() {
@@ -50,4 +49,6 @@ public class Reserva {
     public void setId(Long id) {
         this.id = id;
     }
+
+
 }

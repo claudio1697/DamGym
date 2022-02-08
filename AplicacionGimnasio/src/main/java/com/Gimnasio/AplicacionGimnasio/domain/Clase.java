@@ -1,6 +1,9 @@
 package com.Gimnasio.AplicacionGimnasio.domain;
 
 
+import com.Gimnasio.AplicacionGimnasio.EntityResolver.EntityIdResolver;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -17,10 +20,16 @@ import java.util.List;
 @AllArgsConstructor
 
 @Entity(name = "clase")
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id_clase",
+        resolver = EntityIdResolver.class,
+        scope=Clase.class)
 public class Clase {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
     private Long id_clase;
 
     @Column
@@ -33,10 +42,13 @@ public class Clase {
     private String monitor;
     @Column
     private String descripcion;
-    ///QUIZA HAYA ERROR// @SERGIOABDOMINALES
+
+    @OneToMany(mappedBy = "clase", orphanRemoval = true, cascade = CascadeType.ALL)
+    private List<Reserva> reservas = new ArrayList<>();
+
+///QUIZA HAYA ERROR// @SERGIOABDOMINALES
 //////////RELACIONES COMENTADAS POR POSIBLE ERROR//////////
-   @OneToMany(mappedBy = "clase", cascade = CascadeType.PERSIST)
-    private List<Reserva> reservaList = new ArrayList<>();
+
 
 
     public Long getId_clase() {

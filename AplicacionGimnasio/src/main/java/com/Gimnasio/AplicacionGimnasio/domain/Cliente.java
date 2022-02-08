@@ -1,6 +1,9 @@
 package com.Gimnasio.AplicacionGimnasio.domain;
 
 
+import com.Gimnasio.AplicacionGimnasio.EntityResolver.EntityIdResolver;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +19,11 @@ import java.util.List;
 @RequiredArgsConstructor
 @Entity
 @Table(name="cliente")
-
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id",
+        resolver = EntityIdResolver.class,
+        scope=Cliente.class)
 public class Cliente {
 
     @Id
@@ -33,13 +40,15 @@ public class Cliente {
     private String direccion;
     @Column
     private int telefono;
+
+    @OneToMany(mappedBy = "cliente", orphanRemoval = true, cascade = CascadeType.PERSIST)
+    private List<Reserva> reservas = new ArrayList<>();
+
 ////////RELACIONES COMENTADAS POR ERROR/////////
     //Variable emf que se encarga de organizar las relaciones
  //   private static EntityManagerFactory emf;
     //Relacion de 1 a muchos de clientes a Reserva
-    @OneToMany(mappedBy = "clientes", cascade = CascadeType.PERSIST)
-    //Sacamos la lista del ToString de aqui
-    private List<Reserva> reservasList = new ArrayList<>();
+
 
 
     public Long getId() {
