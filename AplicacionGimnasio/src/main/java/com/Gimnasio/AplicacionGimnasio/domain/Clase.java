@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Getter
@@ -31,10 +33,11 @@ public class Clase {
     private String monitor;
     @Column
     private String descripcion;
+    ///QUIZA HAYA ERROR// @SERGIOABDOMINALES
 //////////RELACIONES COMENTADAS POR POSIBLE ERROR//////////
-   /* @OneToMany(mappedBy = "reserva", cascade = CascadeType.PERSIST)
+   @OneToMany(mappedBy = "reserva", cascade = CascadeType.PERSIST)
     private List<Reserva> reservaList = new ArrayList<>();
-*/
+
 
     public Long getId_clase() {
         return id_clase;
