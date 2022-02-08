@@ -1,6 +1,5 @@
 package com.Gimnasio.AplicacionGimnasio.service;
 
-import com.Gimnasio.AplicacionGimnasio.domain.Clase;
 import com.Gimnasio.AplicacionGimnasio.domain.Reserva;
 
 import java.util.Optional;

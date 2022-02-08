@@ -1,18 +1,14 @@
 package com.Gimnasio.AplicacionGimnasio.service;
 
-import com.Gimnasio.AplicacionGimnasio.domain.Clase;
-import com.Gimnasio.AplicacionGimnasio.domain.Cliente;
+
 import com.Gimnasio.AplicacionGimnasio.domain.Reserva;
-import com.Gimnasio.AplicacionGimnasio.excepcion.clienteNotFoundExcepcion;
+
 import com.Gimnasio.AplicacionGimnasio.excepcion.reservaNotFoundExcepcion;
 import com.Gimnasio.AplicacionGimnasio.repository.ReservaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+
 
 import javax.transaction.Transactional;
 import java.util.Optional;
