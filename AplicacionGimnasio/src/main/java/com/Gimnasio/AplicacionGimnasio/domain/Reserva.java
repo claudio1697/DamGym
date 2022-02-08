@@ -39,7 +39,7 @@ public class Reserva {
     private Cliente clientes;
 
     //Relacion de muchos a 1 de Reserva-Clase
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     private Clase clase;
 
 
