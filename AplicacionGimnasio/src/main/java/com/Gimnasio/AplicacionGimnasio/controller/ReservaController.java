@@ -3,6 +3,7 @@ package com.Gimnasio.AplicacionGimnasio.controller;
 import com.Gimnasio.AplicacionGimnasio.domain.Clase;
 import com.Gimnasio.AplicacionGimnasio.domain.Reserva;
 import com.Gimnasio.AplicacionGimnasio.excepcion.claseNotFoundException;
+import com.Gimnasio.AplicacionGimnasio.excepcion.reservaNotFoundExcepcion;
 import com.Gimnasio.AplicacionGimnasio.service.ReservaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -59,7 +60,7 @@ public class ReservaController {
     @GetMapping(value = "/reserva/{id}", produces = "application/json")
     public ResponseEntity<Reserva> getReservaId(@PathVariable long id) {
         Reserva reserva = reservaService.findById(id)
-                .orElseThrow(() -> new claseNotFoundException(id));
+                .orElseThrow(() -> new reservaNotFoundExcepcion(id, HttpStatus.NOT_FOUND));
         return new ResponseEntity<>(reserva, HttpStatus.OK);
     }
      //Anyadiendo el @Operation calaudio

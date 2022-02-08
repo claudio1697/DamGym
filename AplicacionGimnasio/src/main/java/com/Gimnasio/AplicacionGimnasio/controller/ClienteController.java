@@ -25,7 +25,7 @@ public class ClienteController {
 
     //ANYADIR CLIENTE
     @Operation(summary = "Registra un nuevo Cliente")
-    @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "Se registr el cliente", content = @Content(schema = @Schema(implementation =
+    @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "Se ha registrado el cliente", content = @Content(schema = @Schema(implementation =
             Cliente.class)))
     })
 

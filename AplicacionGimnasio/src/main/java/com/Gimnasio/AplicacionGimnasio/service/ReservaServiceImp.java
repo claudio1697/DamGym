@@ -33,7 +33,7 @@ public class ReservaServiceImp implements ReservaService {
     @Override
     public Reserva modificarReserva(long id, Reserva nueboReserva) {
         Reserva reserva =reservaRepository.findById(id)
-                .orElseThrow(() -> new reservaNotFoundExcepcion(id));
+                .orElseThrow(() -> new reservaNotFoundExcepcion(id, HttpStatus.NOT_FOUND));
         nueboReserva.setId(reserva.getId());
         return reservaRepository.save(nueboReserva);
     }
@@ -47,7 +47,7 @@ public class ReservaServiceImp implements ReservaService {
      @Override
     public void deleteReserva(long id) {
         reservaRepository.findById(id)
-                .orElseThrow(() -> new reservaNotFoundExcepcion(id));
+                .orElseThrow(() -> new reservaNotFoundExcepcion(id, HttpStatus.NOT_FOUND));
         reservaRepository.deleteById(id);
     }//Aqui termina los cambios que he realizado @Claudio
 }

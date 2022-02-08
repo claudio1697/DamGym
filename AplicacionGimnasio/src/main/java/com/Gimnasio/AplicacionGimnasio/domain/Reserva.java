@@ -41,7 +41,7 @@ public class Reserva {
 
     //Relacion de muchos a 1 de Reserva-Clase
     @ManyToOne(fetch = FetchType.LAZY)
-    //private Clase clase;
+    private Clase clase;
 
 
     public Long getId() {
