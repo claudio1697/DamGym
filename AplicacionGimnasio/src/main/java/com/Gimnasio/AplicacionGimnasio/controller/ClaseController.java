@@ -37,7 +37,7 @@ public class ClaseController {
         return new ResponseEntity<>(claseAnyadida, HttpStatus.OK);
     }
      //Anyadiendo el @Operation calaudio
-     @Operation(summary = "Obtiene lista de las mesas")
+     @Operation(summary = "Obtiene lista de las Clase")
      @ApiResponses(value = {
          @ApiResponse(responseCode = "200", description = "Listado de clases", content = @Content(array = @ArraySchema(schema = @Schema(implementation = Clase.class))))
      })     
