@@ -2,7 +2,9 @@ package com.Gimnasio.AplicacionGimnasio.domain;
 
 
 import com.Gimnasio.AplicacionGimnasio.EntityResolver.EntityIdResolver;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -25,6 +27,7 @@ import java.util.List;
         property = "id_clase",
         resolver = EntityIdResolver.class,
         scope=Clase.class)
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Clase {
 
     @Id

@@ -1,7 +1,9 @@
 package com.Gimnasio.AplicacionGimnasio.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -17,6 +19,7 @@ import java.util.Date;
 @RequiredArgsConstructor
 @Entity
 @Table(name="reserva")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Reserva {
 
     @Id
