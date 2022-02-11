@@ -5,6 +5,7 @@ import com.Gimnasio.AplicacionGimnasio.domain.Reserva;
 import java.util.Optional;
 import java.util.Set;
 
+
 public interface ReservaService {
 
 
@@ -23,5 +24,6 @@ public interface ReservaService {
     //ELIMINAR RESERVA
     void deleteReserva(long id);
 
+    boolean findByClase_Reservas_Id(long id);
 
 }

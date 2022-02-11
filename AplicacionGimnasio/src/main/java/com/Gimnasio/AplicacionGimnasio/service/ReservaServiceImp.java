@@ -2,14 +2,11 @@ package com.Gimnasio.AplicacionGimnasio.service;
 
 
 import com.Gimnasio.AplicacionGimnasio.domain.Reserva;
-
 import com.Gimnasio.AplicacionGimnasio.excepcion.reservaNotFoundExcepcion;
 import com.Gimnasio.AplicacionGimnasio.repository.ReservaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-
 
 import javax.transaction.Transactional;
 import java.util.Optional;
@@ -20,7 +17,6 @@ public class ReservaServiceImp implements ReservaService {
 
     @Autowired
     private ReservaRepository reservaRepository;
-
     @Override
     public Set<Reserva> findAll(){return reservaRepository.findAll();}
 
@@ -47,4 +43,10 @@ public class ReservaServiceImp implements ReservaService {
                 .orElseThrow(() -> new reservaNotFoundExcepcion(id, HttpStatus.NOT_FOUND));
         reservaRepository.deleteById(id);
     }//Aqui termina los cambios que he realizado @Claudio
+
+    //Metodo que coje las reservas que hay en clase.
+    @Override
+    public boolean findByClase_Reservas_Id(long id) {
+        return reservaRepository.findByClase_Reservas_Id(id);
+    }
 }

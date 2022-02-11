@@ -1,29 +1,36 @@
 package com.Gimnasio.AplicacionGimnasio.controller;
 
 
+import com.Gimnasio.AplicacionGimnasio.domain.Clase;
 import com.Gimnasio.AplicacionGimnasio.domain.Reserva;
-import com.Gimnasio.AplicacionGimnasio.excepcion.claseNotFoundException;
 import com.Gimnasio.AplicacionGimnasio.excepcion.reservaNotFoundExcepcion;
+import com.Gimnasio.AplicacionGimnasio.service.ClaseService;
 import com.Gimnasio.AplicacionGimnasio.service.ReservaService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.media.Content;
-import io.swagger.v3.oas.annotations.media.Schema;
-import io.swagger.v3.oas.annotations.media.ArraySchema;
+import javax.persistence.EntityManager;
 import java.util.Set;
 
 @RestController
 public class ReservaController {
 
     @Autowired
+    private Clase clase;
     private ReservaService reservaService;
-    
+    private static int contador = 0;
+    private EntityManager entityManager;
+    private ClaseService claseService;
+    private static int capacidad;
+
     //Anyadiendo el @Operation calaudio
     @Operation(summary = "Registro de nueva Reserva en la app")
     @ApiResponses(value = {
@@ -42,11 +49,11 @@ public class ReservaController {
      @Operation(summary = "Obtiene lista de las reservas")
      @ApiResponses(value = {
          @ApiResponse(responseCode = "200", description = "Listado de reserva", content = @Content(array = @ArraySchema(schema = @Schema(implementation = Reserva.class))))
-     })     
+     })
     // OBTENER TODAS LAS RESERVAS
     @GetMapping(value = "/reserva", produces = "application/json")
     public ResponseEntity<Set<Reserva>> getProducts() {
-        Set<Reserva> reserva = null;
+        Set<Reserva> reserva;
         reserva = reservaService.findAll();
         return new ResponseEntity<>(reserva, HttpStatus.OK);
     }
@@ -71,11 +78,17 @@ public class ReservaController {
      })
     // MODIFICAR RESERVA
     @PutMapping(value = "/reserva/{id}", produces = "application/json", consumes = "application/json")
-    public ResponseEntity<Reserva> modifyReserva(@PathVariable long id,
+    public ResponseEntity<Reserva> modifyReserva(@PathVariable int id,
                                                  @RequestBody Reserva newReserva) {
+
         Reserva reserva = reservaService.modificarReserva(id, newReserva);
-        return new ResponseEntity<>(reserva, HttpStatus.OK);
-    }
+         if (reservaService.findByClase_Reservas_Id(newReserva.getId()))
+             if (claseService.findByReservas_Clase_Capacidad(clase.getCapacidad()) == contador) {
+                 return new ResponseEntity<>(reserva, HttpStatus.BANDWIDTH_LIMIT_EXCEEDED);
+             }
+            contador++;
+            return new ResponseEntity<>(reserva, HttpStatus.OK);
+     }
     //Anyadiendo el @Operation calaudio
     @Operation(summary = "Elimina una reserva")
     @ApiResponses(value = {
@@ -86,10 +99,11 @@ public class ReservaController {
     @DeleteMapping(value = "/reserva/{id}", produces = "application/json")
     public void deleteReserva(@PathVariable long id){
         reservaService.deleteReserva(id);
+        if(contador==0){
+            contador = 0;
+        }else if(contador>0){
+            contador--;
+        }
     }
-
-
-
-
 
 }

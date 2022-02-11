@@ -33,6 +33,7 @@ public class ClaseController {
     // ANYADIR CLASES (POST)
     @PostMapping(value = "/clase", produces = "application/json", consumes = "application/json")
     public ResponseEntity<Clase> anyadirClase(@RequestBody Clase clase){
+
         Clase claseAnyadida = claseService.anyadirClaseBD(clase);
         return new ResponseEntity<>(claseAnyadida, HttpStatus.OK);
     }
@@ -85,11 +86,6 @@ public class ClaseController {
     public void deleteClase(@PathVariable long id){
         claseService.deleteClase(id);
     }
-
-
-
-
-
 
 
 }

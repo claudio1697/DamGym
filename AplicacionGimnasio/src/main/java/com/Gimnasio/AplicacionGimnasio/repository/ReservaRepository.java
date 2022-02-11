@@ -8,4 +8,9 @@ import java.util.Set;
 
 public interface ReservaRepository extends CrudRepository<Reserva,Long> {
     Set<Reserva> findAll();
+
+    boolean findByClase_Reservas_Id(Long id);
+
+
+
 }

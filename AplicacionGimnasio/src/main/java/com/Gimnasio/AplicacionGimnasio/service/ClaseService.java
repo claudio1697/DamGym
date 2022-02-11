@@ -1,6 +1,8 @@
 package com.Gimnasio.AplicacionGimnasio.service;
 
 import com.Gimnasio.AplicacionGimnasio.domain.Clase;
+import org.springframework.stereotype.Service;
+
 
 import java.util.Optional;
 import java.util.Set;
@@ -21,5 +23,9 @@ public interface ClaseService {
 
     // BORRAR CLASES
     void deleteClase(long id);
-	//// COMENTARIO PRUEBA ////
+
+
+    boolean existsByReservas_Clase_Capacidad(int id);
+
+    Integer findByReservas_Clase_Capacidad(int id);
 }

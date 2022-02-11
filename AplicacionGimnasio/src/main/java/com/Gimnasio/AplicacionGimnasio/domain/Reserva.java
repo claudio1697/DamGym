@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
+import org.springframework.stereotype.Repository;
 
 import javax.persistence.*;
 import java.time.LocalTime;
@@ -17,8 +18,8 @@ import java.util.Date;
 @Getter
 @Setter
 @RequiredArgsConstructor
-@Entity
-@Table(name="reserva")
+@Repository
+@Entity(name="reserva")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Reserva {
 
