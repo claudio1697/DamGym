@@ -1,6 +1,7 @@
 package com.Gimnasio.AplicacionGimnasio.service;
 
 
+import com.Gimnasio.AplicacionGimnasio.domain.Clase;
 import com.Gimnasio.AplicacionGimnasio.domain.Reserva;
 import com.Gimnasio.AplicacionGimnasio.excepcion.reservaNotFoundExcepcion;
 import com.Gimnasio.AplicacionGimnasio.repository.ReservaRepository;
@@ -49,4 +50,11 @@ public class ReservaServiceImp implements ReservaService {
     public boolean findByClase_Reservas_Id(long id) {
         return reservaRepository.findByClase_Reservas_Id(id);
     }
+
+    @Override
+    public long countByClase_Reservas_Id(long id) {
+        return reservaRepository.countByClase_Reservas_Id(id);
+    }
+
+
 }

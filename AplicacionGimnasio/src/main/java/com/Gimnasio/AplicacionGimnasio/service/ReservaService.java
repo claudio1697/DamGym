@@ -1,6 +1,9 @@
 package com.Gimnasio.AplicacionGimnasio.service;
 
+import com.Gimnasio.AplicacionGimnasio.domain.Clase;
 import com.Gimnasio.AplicacionGimnasio.domain.Reserva;
+import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 import java.util.Set;
@@ -25,5 +28,7 @@ public interface ReservaService {
     void deleteReserva(long id);
 
     boolean findByClase_Reservas_Id(long id);
+
+   long countByClase_Reservas_Id(long id);
 
 }

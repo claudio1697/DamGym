@@ -24,13 +24,11 @@ import java.util.Set;
 public class ReservaController {
 
     @Autowired
-    private Clase clase;
     private ReservaService reservaService;
     private static int contador = 0;
     private EntityManager entityManager;
-    private ClaseService claseService;
     private static int capacidad;
-
+    private Clase clase;
     //Anyadiendo el @Operation calaudio
     @Operation(summary = "Registro de nueva Reserva en la app")
     @ApiResponses(value = {
@@ -81,13 +79,18 @@ public class ReservaController {
     public ResponseEntity<Reserva> modifyReserva(@PathVariable int id,
                                                  @RequestBody Reserva newReserva) {
 
+
         Reserva reserva = reservaService.modificarReserva(id, newReserva);
-         if (reservaService.findByClase_Reservas_Id(newReserva.getId()))
-             if (claseService.findByReservas_Clase_Capacidad(clase.getCapacidad()) == contador) {
+        contador++;
+        long num = reservaService.countByClase_Reservas_Id(id);
+        System.out.println("EL NUMERO DE RESERVAD HECHAS A ESTA CLASE: " + num);
+             if (num >= contador) {
+                 System.out.println("NO SE PUEDEN HACER MAS RESERVAS");
+                 //Crear Excepcion
                  return new ResponseEntity<>(reserva, HttpStatus.BANDWIDTH_LIMIT_EXCEEDED);
-             }
-            contador++;
-            return new ResponseEntity<>(reserva, HttpStatus.OK);
+         }
+
+         return new ResponseEntity<>(reserva, HttpStatus.OK);
      }
     //Anyadiendo el @Operation calaudio
     @Operation(summary = "Elimina una reserva")
@@ -99,9 +102,7 @@ public class ReservaController {
     @DeleteMapping(value = "/reserva/{id}", produces = "application/json")
     public void deleteReserva(@PathVariable long id){
         reservaService.deleteReserva(id);
-        if(contador==0){
-            contador = 0;
-        }else if(contador>0){
+        if(contador>0){
             contador--;
         }
     }
