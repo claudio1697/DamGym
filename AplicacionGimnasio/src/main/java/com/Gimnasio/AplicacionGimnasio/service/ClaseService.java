@@ -2,6 +2,7 @@ package com.Gimnasio.AplicacionGimnasio.service;
 
 import com.Gimnasio.AplicacionGimnasio.domain.Clase;
 
+import java.util.Date;
 import java.util.Optional;
 import java.util.Set;
 
@@ -27,4 +28,6 @@ public interface ClaseService {
     boolean existsByReservas_Clase_Capacidad(int id);
 
     Integer findByReservas_Clase_Capacidad(int id);
+
+    Clase findByReservas_Fecha(Date fecha);
 }

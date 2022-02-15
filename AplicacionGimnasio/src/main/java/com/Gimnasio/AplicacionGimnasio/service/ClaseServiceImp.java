@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.Date;
 import java.util.Optional;
 import java.util.Set;
 @Service
@@ -71,6 +72,11 @@ public class ClaseServiceImp implements ClaseService {
     @Override
     public Integer findByReservas_Clase_Capacidad(int id) {
         return claseRepository.findByReservas_Clase_Capacidad(id);
+    }
+
+    @Override
+    public Clase findByReservas_Fecha(Date fecha) {
+        return claseRepository.findByReservas_Fecha(fecha);
     }
 
 

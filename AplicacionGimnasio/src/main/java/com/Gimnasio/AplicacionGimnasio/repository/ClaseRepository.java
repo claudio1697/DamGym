@@ -3,6 +3,7 @@ package com.Gimnasio.AplicacionGimnasio.repository;
 import com.Gimnasio.AplicacionGimnasio.domain.Clase;
 import org.springframework.data.repository.CrudRepository;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -23,6 +24,8 @@ public interface ClaseRepository extends CrudRepository<Clase,Long> {
 
 
     Integer findByReservas_Clase_Capacidad(int capacidad);
+
+    Clase findByReservas_Fecha(Date fecha);
 
 
 

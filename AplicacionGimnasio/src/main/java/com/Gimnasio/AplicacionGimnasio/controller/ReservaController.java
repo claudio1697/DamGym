@@ -18,6 +18,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.EntityManager;
+import java.util.Date;
 import java.util.Set;
 
 @RestController
@@ -41,18 +42,21 @@ public class ReservaController {
     // ANYADIR RESERVA (POST)
     @PostMapping(value = "/reserva", produces = "application/json", consumes = "application/json")
     public ResponseEntity<Reserva> anyadirReserva(@RequestBody Reserva reserva){
-        Reserva reservaAnyadida = reservaService.anyadirReservaBD(reserva);
+
         if(!reservaService.existsByIdIsNull()) {
             long num = reservaService.countByHora(reserva.getHora());
-            if (num <= reserva.getClase().getCapacidad()) {
+            if (num < reserva.getClase().getCapacidad()) {
+                Reserva reservaAnyadida = reservaService.anyadirReservaBD(reserva);
                 System.out.println("EL NUMERO DE RESERVAD HECHAS A ESTA CLASE: " + num);
                 System.out.println("LIMITE DE RESERVAS ES:" + reserva.getClase().getCapacidad());
                 return new ResponseEntity<>(reservaAnyadida, HttpStatus.OK);
             } else {
 
-               return new ResponseEntity<>(HttpStatus.CONFLICT);
+                return new ResponseEntity<>(HttpStatus.OK);
+
             }
         }else{
+            Reserva reservaAnyadida = reservaService.anyadirReservaBD(reserva);
             return new ResponseEntity<>(reservaAnyadida, HttpStatus.OK);
         }
     }
@@ -82,6 +86,7 @@ public class ReservaController {
                     .orElseThrow(() -> new reservaNotFoundExcepcion(id, HttpStatus.NOT_FOUND));
             return new ResponseEntity<>(reserva, HttpStatus.OK);
         }
+
         //Anyadiendo el @Operation calaudio
         @Operation(summary = "Modifica una reserva")
         @ApiResponses(value = {
@@ -111,6 +116,8 @@ public class ReservaController {
                 contador--;
             }
         }
+
+
 
 
 
