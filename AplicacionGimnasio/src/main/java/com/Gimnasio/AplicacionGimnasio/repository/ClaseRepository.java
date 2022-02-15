@@ -16,6 +16,8 @@ public interface ClaseRepository extends CrudRepository<Clase,Long> {
 
     Optional<Clase> findById(long id);
 
+    Clase findByNombre(String nombre);
+
 
     boolean existsByReservas_Clase_Capacidad(int capacidad);
 

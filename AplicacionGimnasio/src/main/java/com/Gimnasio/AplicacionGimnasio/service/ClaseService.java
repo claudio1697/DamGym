@@ -22,6 +22,7 @@ public interface ClaseService {
     // BORRAR CLASES
     void deleteClase(long id);
 
+    Clase findByNombre(String nombre);
 
     boolean existsByReservas_Clase_Capacidad(int id);
 

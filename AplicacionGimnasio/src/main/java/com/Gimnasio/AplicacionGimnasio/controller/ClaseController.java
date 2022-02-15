@@ -49,7 +49,7 @@ public class ClaseController {
         clase = claseService.findAll();
         return new ResponseEntity<>(clase, HttpStatus.OK);
     }
-    //Anyadiendo el @Operation calaudio
+    //Anyadiendo el @Operation claudio
     @Operation(summary = "Obtiene una clase determinada")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Existe la clase", content = @Content(schema =  @Schema(implementation = Clase.class))),
@@ -60,6 +60,17 @@ public class ClaseController {
     public ResponseEntity<Clase> getClaseId(@PathVariable long id) {
         Clase clase = claseService.findById(id)
                 .orElseThrow(() -> new claseNotFoundException(id));
+        return new ResponseEntity<>(clase, HttpStatus.OK);
+    }
+    @Operation(summary = "Obtiene una clase determinada")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Existe la clase", content = @Content(schema =  @Schema(implementation = Clase.class))),
+            @ApiResponse(responseCode = "404", description = "La clase no existe", content = @Content(schema =  @Schema(implementation = Response.class)))
+    })
+    // BUSCAR CLASE POR ID
+    @GetMapping(value = "/clase/{nombre}", produces = "application/json")
+    public ResponseEntity<Clase> getClaseNombre(@PathVariable String nombre) {
+        Clase clase = claseService.findByNombre(nombre);
         return new ResponseEntity<>(clase, HttpStatus.OK);
     }
     //Anyadiendo el @Operation calaudio

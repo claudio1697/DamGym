@@ -59,6 +59,11 @@ public class ClaseServiceImp implements ClaseService {
     }
 
     @Override
+    public Clase findByNombre(String nombre) {
+        return claseRepository.findByNombre(nombre);
+    }
+
+    @Override
     public boolean existsByReservas_Clase_Capacidad(int id) {
         return claseRepository.existsByReservas_Clase_Capacidad(id);
     }
