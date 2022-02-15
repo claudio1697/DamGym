@@ -5,6 +5,7 @@ import com.Gimnasio.AplicacionGimnasio.domain.Reserva;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalTime;
 import java.util.Optional;
 import java.util.Set;
 
@@ -32,5 +33,8 @@ public interface ReservaService {
     long countByClase_Reservas_Id(long id);
 
     long countByCliente_Id(long id);
+
+    long countByHora(LocalTime hora);
+
 
 }

@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.time.LocalTime;
 import java.util.Optional;
 import java.util.Set;
 @Service
@@ -59,5 +60,10 @@ public class ReservaServiceImp implements ReservaService {
 
     @Override
     public long countByCliente_Id(long id){return reservaRepository.countByCliente_Id(id);}
+
+    @Override
+    public long countByHora(LocalTime hora) {
+        return reservaRepository.countByHora(hora);
+    }
 
 }

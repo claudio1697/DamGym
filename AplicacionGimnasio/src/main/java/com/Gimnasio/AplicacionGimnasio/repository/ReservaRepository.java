@@ -5,12 +5,16 @@ import com.Gimnasio.AplicacionGimnasio.domain.Reserva;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
+import java.time.LocalTime;
 import java.util.Set;
 
 public interface ReservaRepository extends CrudRepository<Reserva,Long> {
 
 
     boolean existsByIdIsNull();
+
+
+    long countByHora(LocalTime hora);
 
     Set<Reserva> findAll();
 

@@ -43,13 +43,14 @@ public class ReservaController {
     public ResponseEntity<Reserva> anyadirReserva(@RequestBody Reserva reserva){
         Reserva reservaAnyadida = reservaService.anyadirReservaBD(reserva);
         if(!reservaService.existsByIdIsNull()) {
-            long num = reservaService.countByClase_Reservas_Id(reserva.getClase().getId_clase());
+            long num = reservaService.countByHora(reserva.getHora());
             if (num <= reserva.getClase().getCapacidad()) {
                 System.out.println("EL NUMERO DE RESERVAD HECHAS A ESTA CLASE: " + num);
                 System.out.println("LIMITE DE RESERVAS ES:" + reserva.getClase().getCapacidad());
                 return new ResponseEntity<>(reservaAnyadida, HttpStatus.OK);
             } else {
-               return new ResponseEntity<>(HttpStatus.BANDWIDTH_LIMIT_EXCEEDED);
+
+               return new ResponseEntity<>(HttpStatus.CONFLICT);
             }
         }else{
             return new ResponseEntity<>(reservaAnyadida, HttpStatus.OK);
