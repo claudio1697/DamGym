@@ -34,6 +34,7 @@ public class Reserva {
     @JsonFormat(pattern = "HH:mm:ss")
     private LocalTime hora;
 
+
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "clase_id")
     private Clase clase;
@@ -41,18 +42,6 @@ public class Reserva {
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;
-
-
-
-
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
 
 }

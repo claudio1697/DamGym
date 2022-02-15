@@ -27,8 +27,10 @@ public interface ReservaService {
     //ELIMINAR RESERVA
     void deleteReserva(long id);
 
-    boolean findByClase_Reservas_Id(long id);
+    boolean existsByIdIsNull();
 
-   long countByClase_Reservas_Id(long id);
+    long countByClase_Reservas_Id(long id);
+
+    long countByCliente_Id(long id);
 
 }

@@ -20,4 +20,9 @@ public interface ClienteService {
 
     // BORRAR CLIENTE
     void deleteCliente(long id);
+
+    //Encontrar por DNI
+    Cliente findByDni(String dni);
+
+    void deleteByDni(String dni);
 }

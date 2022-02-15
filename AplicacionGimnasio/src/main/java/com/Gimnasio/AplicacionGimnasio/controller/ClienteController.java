@@ -62,6 +62,19 @@ public class ClienteController {
                 .orElseThrow(() -> new clienteNotFoundExcepcion(id));
         return new ResponseEntity<>(cliente, HttpStatus.OK);
     }
+    //Encontrar cliente por DNI
+    @Operation(summary = "Obtiene un cliente determinado")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Existe el cliente", content = @Content(schema = @Schema(implementation =
+                    Cliente.class))),
+            @ApiResponse(responseCode = "404", description = "El Cliente no existe", content = @Content(schema = @Schema(implementation =
+                    Cliente.class)))
+    } )
+    @GetMapping(value = "/cliente/{dni}",produces = "application/json")
+    public ResponseEntity<Cliente> getClienteDNI(@PathVariable String dni) {
+        Cliente cliente = clienteService.findByDni(dni);
+        return new ResponseEntity<>(cliente, HttpStatus.OK);
+    }
 
     //MODIFICAR CLIENTE PUT
     @Operation(summary = "Modifica un Cliente en el catálogo")
@@ -90,4 +103,13 @@ public class ClienteController {
     @DeleteMapping(value = "/cliente/{id}",produces = "application/json")
     public void deleteClient(@PathVariable long id){clienteService.deleteCliente(id);}
 
+    //ELIMINAR CLIENTE POR DNI
+
+    @Operation(summary = "Elimina un Cliente")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200",description = "Se elimina el Cliente",content = @Content(schema = @Schema(implementation = Response.class))),
+            @ApiResponse(responseCode = "404",description = "El Cliente no existe",content = @Content(schema = @Schema(implementation = Response.class)))
+    })
+    @DeleteMapping(value = "/cliente/{dni}",produces = "application/json")
+    public void deleteClientDNI(@PathVariable String dni){clienteService.deleteByDni(dni);}
 }

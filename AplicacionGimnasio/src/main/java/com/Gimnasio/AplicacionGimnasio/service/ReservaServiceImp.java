@@ -47,8 +47,8 @@ public class ReservaServiceImp implements ReservaService {
 
     //Metodo que coje las reservas que hay en clase.
     @Override
-    public boolean findByClase_Reservas_Id(long id) {
-        return reservaRepository.findByClase_Reservas_Id(id);
+    public boolean existsByIdIsNull() {
+        return reservaRepository.existsByIdIsNull();
     }
 
     @Override
@@ -56,5 +56,8 @@ public class ReservaServiceImp implements ReservaService {
         return reservaRepository.countByClase_Reservas_Id(id);
     }
 
+
+    @Override
+    public long countByCliente_Id(long id){return reservaRepository.countByCliente_Id(id);}
 
 }

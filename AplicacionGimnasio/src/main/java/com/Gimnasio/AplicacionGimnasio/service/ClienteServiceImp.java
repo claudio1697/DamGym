@@ -50,5 +50,15 @@ public class ClienteServiceImp implements ClienteService {
         clienteRepository.deleteById(id);
     }
 
+    @Override
+    public Cliente findByDni(String dni) {
+        return clienteRepository.findByDni(dni);
+    }
+
+    @Override
+    public void deleteByDni(String dni) {
+        clienteRepository.deleteByDni(dni);
+    }
+
 
 }
