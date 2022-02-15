@@ -4,7 +4,6 @@ package com.Gimnasio.AplicacionGimnasio.controller;
 import com.Gimnasio.AplicacionGimnasio.domain.Clase;
 import com.Gimnasio.AplicacionGimnasio.domain.Reserva;
 import com.Gimnasio.AplicacionGimnasio.excepcion.reservaNotFoundExcepcion;
-import com.Gimnasio.AplicacionGimnasio.service.ClaseService;
 import com.Gimnasio.AplicacionGimnasio.service.ReservaService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
@@ -18,7 +17,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.EntityManager;
-import java.util.Date;
 import java.util.Set;
 
 @RestController
@@ -51,8 +49,8 @@ public class ReservaController {
                 System.out.println("LIMITE DE RESERVAS ES:" + reserva.getClase().getCapacidad());
                 return new ResponseEntity<>(reservaAnyadida, HttpStatus.OK);
             } else {
-
-                return new ResponseEntity<>(HttpStatus.OK);
+                Reserva aux = new Reserva(-1L,null,null,null,null);
+                return new ResponseEntity<>(aux,HttpStatus.OK);
 
             }
         }else{
