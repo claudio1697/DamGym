@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.Date;
 import java.util.Optional;
 import java.util.Set;
 @Service
@@ -51,13 +50,9 @@ public class ClaseServiceImp implements ClaseService {
 
     }//hasta aqui
 
-    // Añadido metodo de borrado cliente @Fede
+   
     @Override
-    public void deleteClase(long id) {
-        claseRepository.findById(id)
-                .orElseThrow(() -> new claseNotFoundException(id));
-        claseRepository.deleteById(id);
-    }
+    public long deleteByNombre(String nombre) {return claseRepository.deleteByNombre(nombre);}
 
     @Override
     public Clase findByNombre(String nombre) {
@@ -74,10 +69,7 @@ public class ClaseServiceImp implements ClaseService {
         return claseRepository.findByReservas_Clase_Capacidad(id);
     }
 
-    @Override
-    public Clase findByReservas_Fecha(Date fecha) {
-        return claseRepository.findByReservas_Fecha(fecha);
-    }
+
 
 
 }

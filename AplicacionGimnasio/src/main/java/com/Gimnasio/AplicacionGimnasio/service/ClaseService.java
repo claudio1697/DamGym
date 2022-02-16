@@ -2,7 +2,6 @@ package com.Gimnasio.AplicacionGimnasio.service;
 
 import com.Gimnasio.AplicacionGimnasio.domain.Clase;
 
-import java.util.Date;
 import java.util.Optional;
 import java.util.Set;
 
@@ -21,7 +20,7 @@ public interface ClaseService {
     Clase modificarClase(long id, Clase nuevaClase);
 
     // BORRAR CLASES
-    void deleteClase(long id);
+    long deleteByNombre(String nombre);
 
     Clase findByNombre(String nombre);
 
@@ -29,5 +28,4 @@ public interface ClaseService {
 
     Integer findByReservas_Clase_Capacidad(int id);
 
-    Clase findByReservas_Fecha(Date fecha);
 }

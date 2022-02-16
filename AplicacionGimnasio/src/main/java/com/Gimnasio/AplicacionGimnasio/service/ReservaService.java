@@ -1,13 +1,9 @@
 package com.Gimnasio.AplicacionGimnasio.service;
 
-import com.Gimnasio.AplicacionGimnasio.domain.Clase;
 import com.Gimnasio.AplicacionGimnasio.domain.Reserva;
-import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
 
 import java.time.LocalTime;
 import java.util.Date;
-import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -36,8 +32,8 @@ public interface ReservaService {
 
     long countByCliente_Id(long id);
 
-    long countByHora(LocalTime hora);
 
+    long countDistinctByFechaAndHora(Date fecha, LocalTime hora);
 
 
 

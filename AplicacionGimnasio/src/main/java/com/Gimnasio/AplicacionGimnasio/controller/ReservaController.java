@@ -42,7 +42,7 @@ public class ReservaController {
     public ResponseEntity<Reserva> anyadirReserva(@RequestBody Reserva reserva){
 
         if(!reservaService.existsByIdIsNull()) {
-            long num = reservaService.countByHora(reserva.getHora());
+            long num = reservaService.countDistinctByFechaAndHora(reserva.getFecha(), reserva.getHora());
             if (num < reserva.getClase().getCapacidad()) {
                 Reserva reservaAnyadida = reservaService.anyadirReservaBD(reserva);
                 System.out.println("EL NUMERO DE RESERVAD HECHAS A ESTA CLASE: " + num);
@@ -65,6 +65,7 @@ public class ReservaController {
                 @ApiResponse(responseCode = "200", description = "Listado de reserva", content = @Content(array = @ArraySchema(schema = @Schema(implementation = Reserva.class))))
         })
         // OBTENER TODAS LAS RESERVAS
+
         @GetMapping(value = "/reserva", produces = "application/json")
         public ResponseEntity<Set<Reserva>> getProducts () {
             Set<Reserva> reserva;

@@ -17,6 +17,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+/**
+ * class que contiene las Clases del gimnasio
+ */
 @Getter
 @Setter
 @RequiredArgsConstructor
@@ -53,13 +56,4 @@ public class Clase {
 ///QUIZA HAYA ERROR// @SERGIOABDOMINALES
 //////////RELACIONES COMENTADAS POR POSIBLE ERROR//////////
 
-
-
-    public Long getId_clase() {
-        return id_clase;
-    }
-
-    public void setId_clase(Long id_clase) {
-        this.id_clase = id_clase;
-    }
 }

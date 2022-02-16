@@ -15,11 +15,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
 import java.util.Set;
 
 @RestController
-
 public class ClaseController {
 
     @Autowired
@@ -44,6 +42,7 @@ public class ClaseController {
          @ApiResponse(responseCode = "200", description = "Listado de clases", content = @Content(array = @ArraySchema(schema = @Schema(implementation = Clase.class))))
      })     
     // OBTENER TODAS LAS CLASES
+
     @GetMapping(value = "/clase", produces = "application/json")
     public ResponseEntity<Set<Clase>> getProducts() {
         Set<Clase> clase = null;
@@ -56,33 +55,22 @@ public class ClaseController {
         @ApiResponse(responseCode = "200", description = "Existe la clase", content = @Content(schema =  @Schema(implementation = Clase.class))),
         @ApiResponse(responseCode = "404", description = "La clase no existe", content = @Content(schema =  @Schema(implementation = Response.class)))
     })
-    // BUSCAR CLASE POR ID
-    @GetMapping(value = "/clase/{id}", produces = "application/json")
+    // BUSCAR CLASE POR
+    //Cambiado
+    @GetMapping(value = "/clase/id_clase/{id}", produces = "application/json")
     public ResponseEntity<Clase> getClaseId(@PathVariable long id) {
         Clase clase = claseService.findById(id)
                 .orElseThrow(() -> new claseNotFoundException(id));
         return new ResponseEntity<>(clase, HttpStatus.OK);
     }
-    //Anyadiendo el @Operation claudio
-    @Operation(summary = "Obtiene una clase determinada")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Existe la clase", content = @Content(schema =  @Schema(implementation = Clase.class))),
-            @ApiResponse(responseCode = "404", description = "La clase no existe", content = @Content(schema =  @Schema(implementation = Response.class)))
-    })
-    // BUSCAR CLASE POR FECHA
-    @GetMapping(value = "/clase/{fecha}", produces = "application/json")
-    public ResponseEntity<Clase> getClaseFecha(@PathVariable Date fecha) {
-        Clase clase = claseService.findByReservas_Fecha(fecha);
 
-        return new ResponseEntity<>(clase, HttpStatus.OK);
-    }
     @Operation(summary = "Obtiene una clase determinada")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Existe la clase", content = @Content(schema =  @Schema(implementation = Clase.class))),
             @ApiResponse(responseCode = "404", description = "La clase no existe", content = @Content(schema =  @Schema(implementation = Response.class)))
     })
     // BUSCAR CLASE POR ID
-    @GetMapping(value = "/clase/{nombre}", produces = "application/json")
+    @GetMapping(value = "/clase-{nombre}", produces = "application/json")
     public ResponseEntity<Clase> getClaseNombre(@PathVariable String nombre) {
         Clase clase = claseService.findByNombre(nombre);
         return new ResponseEntity<>(clase, HttpStatus.OK);
@@ -107,9 +95,9 @@ public class ClaseController {
         @ApiResponse(responseCode = "404", description = "La clase no existe", content = @Content(schema =  @Schema(implementation = Response.class)))
     })
     // BORRAR CLASE
-    @DeleteMapping(value ="/clase/{id}", produces = "application/json")
-    public void deleteClase(@PathVariable long id){
-        claseService.deleteClase(id);
+    @DeleteMapping(value ="/clase/{nombre}", produces = "application/json")
+    public void deleteClase(@PathVariable String nombre){
+        claseService.deleteByNombre(nombre);
     }
 
 

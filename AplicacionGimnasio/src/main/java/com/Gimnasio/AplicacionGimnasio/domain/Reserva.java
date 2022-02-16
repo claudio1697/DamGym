@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.*;
@@ -28,6 +29,7 @@ public class Reserva {
     @Column(name = "codReserva", nullable = false)
     private Long id;
     @Column
+    @Temporal(TemporalType.TIMESTAMP)
     private Date fecha;
 
     @Column

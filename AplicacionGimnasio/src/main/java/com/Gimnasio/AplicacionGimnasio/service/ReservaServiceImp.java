@@ -1,7 +1,6 @@
 package com.Gimnasio.AplicacionGimnasio.service;
 
 
-import com.Gimnasio.AplicacionGimnasio.domain.Clase;
 import com.Gimnasio.AplicacionGimnasio.domain.Reserva;
 import com.Gimnasio.AplicacionGimnasio.excepcion.reservaNotFoundExcepcion;
 import com.Gimnasio.AplicacionGimnasio.repository.ReservaRepository;
@@ -12,7 +11,6 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.time.LocalTime;
 import java.util.Date;
-import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 @Service
@@ -63,12 +61,12 @@ public class ReservaServiceImp implements ReservaService {
     @Override
     public long countByCliente_Id(long id){return reservaRepository.countByCliente_Id(id);}
 
+
+
     @Override
-    public long countByHora(LocalTime hora) {
-        return reservaRepository.countByHora(hora);
+    public long countDistinctByFechaAndHora(Date fecha, LocalTime hora) {
+        return reservaRepository.countDistinctByFechaAndHora(fecha, hora);
     }
-
-
 
 
 }

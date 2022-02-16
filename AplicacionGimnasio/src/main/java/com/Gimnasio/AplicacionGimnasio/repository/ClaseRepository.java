@@ -25,7 +25,7 @@ public interface ClaseRepository extends CrudRepository<Clase,Long> {
 
     Integer findByReservas_Clase_Capacidad(int capacidad);
 
-    Clase findByReservas_Fecha(Date fecha);
+    long deleteByNombre(String nombre);
 
 
 
