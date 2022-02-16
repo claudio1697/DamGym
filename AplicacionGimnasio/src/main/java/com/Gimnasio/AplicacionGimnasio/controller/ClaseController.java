@@ -55,9 +55,9 @@ public class ClaseController {
         @ApiResponse(responseCode = "200", description = "Existe la clase", content = @Content(schema =  @Schema(implementation = Clase.class))),
         @ApiResponse(responseCode = "404", description = "La clase no existe", content = @Content(schema =  @Schema(implementation = Response.class)))
     })
-    // BUSCAR CLASE POR
+    // BUSCAR CLASE POR ID
     //Cambiado
-    @GetMapping(value = "/clase/id_clase/{id}", produces = "application/json")
+    @GetMapping(value = "/claseId/{id}", produces = "application/json")
     public ResponseEntity<Clase> getClaseId(@PathVariable long id) {
         Clase clase = claseService.findById(id)
                 .orElseThrow(() -> new claseNotFoundException(id));
@@ -69,8 +69,8 @@ public class ClaseController {
             @ApiResponse(responseCode = "200", description = "Existe la clase", content = @Content(schema =  @Schema(implementation = Clase.class))),
             @ApiResponse(responseCode = "404", description = "La clase no existe", content = @Content(schema =  @Schema(implementation = Response.class)))
     })
-    // BUSCAR CLASE POR ID
-    @GetMapping(value = "/clase-{nombre}", produces = "application/json")
+    // BUSCAR CLASE POR NOMBRE DE LA CLASE
+    @GetMapping(value = "/claseBuscar/{nombre}", produces = "application/json")
     public ResponseEntity<Clase> getClaseNombre(@PathVariable String nombre) {
         Clase clase = claseService.findByNombre(nombre);
         return new ResponseEntity<>(clase, HttpStatus.OK);
@@ -83,7 +83,7 @@ public class ClaseController {
     })
     // MODIFICAR CLASE ( PUT)
     // metodo creado Sergio
-    @PutMapping( value = "/clase/{id_clase}",produces ="application/json", consumes = "application/json")
+    @PutMapping( value = "/claseModificar/{id_clase}",produces ="application/json", consumes = "application/json")
     public ResponseEntity<Clase> modifyClase(@PathVariable long id_clase,@RequestBody Clase claseModificada){
         Clase clase = claseService.modificarClase(id_clase,claseModificada);
         return new ResponseEntity<>(clase,HttpStatus.OK);
@@ -95,7 +95,7 @@ public class ClaseController {
         @ApiResponse(responseCode = "404", description = "La clase no existe", content = @Content(schema =  @Schema(implementation = Response.class)))
     })
     // BORRAR CLASE
-    @DeleteMapping(value ="/clase/{nombre}", produces = "application/json")
+    @DeleteMapping(value ="/claseEliminar/{nombre}", produces = "application/json")
     public void deleteClase(@PathVariable String nombre){
         claseService.deleteByNombre(nombre);
     }
