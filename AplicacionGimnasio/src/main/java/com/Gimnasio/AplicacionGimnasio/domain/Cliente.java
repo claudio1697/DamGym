@@ -61,4 +61,13 @@ public class Cliente {
     public void setId(Long id) {
         this.id = id;
     }
+
+
+    public String getDni() {
+        return dni;
+    }
+
+    public void setDni(String dni) {
+        this.dni = dni;
+    }
 }

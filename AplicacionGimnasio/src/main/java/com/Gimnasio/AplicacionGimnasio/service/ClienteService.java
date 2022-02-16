@@ -16,7 +16,7 @@ public interface ClienteService {
     Optional<Cliente> findById(long id);
 
     // MODIFICAR CLIENTE
-    Cliente modificarCliente(String dni, Cliente nueboCliente);
+    Cliente modificarCliente(String dni, Cliente nuevoCliente);
 
     // BORRAR CLIENTE
     void deleteCliente(long id);

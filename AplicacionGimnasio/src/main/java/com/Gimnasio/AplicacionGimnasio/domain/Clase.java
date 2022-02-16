@@ -56,4 +56,20 @@ public class Clase {
 ///QUIZA HAYA ERROR// @SERGIOABDOMINALES
 //////////RELACIONES COMENTADAS POR POSIBLE ERROR//////////
 
+
+    public int getCapacidad() {
+        return capacidad;
+    }
+
+    public void setCapacidad(int capacidad) {
+        this.capacidad = capacidad;
+    }
+
+    public Long getId_clase() {
+        return id_clase;
+    }
+
+    public void setId_clase(Long id_clase) {
+        this.id_clase = id_clase;
+    }
 }

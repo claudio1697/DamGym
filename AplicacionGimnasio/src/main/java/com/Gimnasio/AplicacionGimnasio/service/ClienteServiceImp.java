@@ -35,10 +35,10 @@ public class ClienteServiceImp implements ClienteService {
     }
 
     @Override
-    public Cliente modificarCliente(String dni, Cliente nueboCliente) {
+    public Cliente modificarCliente(String dni, Cliente nuevoCliente) {
         Cliente cliente =clienteRepository.findByDni(dni);
-        nueboCliente.setDni(cliente.getDni());
-        return clienteRepository.save(nueboCliente);
+        nuevoCliente.setDni(cliente.getDni());
+        return clienteRepository.save(nuevoCliente);
     }
 
     // Añadido metodo de borrado cliente @Fede
@@ -51,11 +51,13 @@ public class ClienteServiceImp implements ClienteService {
 
     @Override
     public Cliente findByDni(String dni) {
-        return clienteRepository.findByDni(dni);
+      return clienteRepository.findByDni(dni);
     }
 
     @Override
     public void deleteByDni(String dni) {
+        clienteRepository.findByDni(dni).getDni();
+
         clienteRepository.deleteByDni(dni);
     }
 

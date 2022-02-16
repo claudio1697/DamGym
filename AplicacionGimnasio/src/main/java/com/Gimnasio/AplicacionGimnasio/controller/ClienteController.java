@@ -69,7 +69,7 @@ public class ClienteController {
             @ApiResponse(responseCode = "404", description = "El Cliente no existe", content = @Content(schema = @Schema(implementation =
                     Cliente.class)))
     } )
-    @GetMapping(value = "/cliente-{dni}",produces = "application/json")
+    @GetMapping(value = "/clienteBuscar/{dni}",produces = "application/json")
     public ResponseEntity<Cliente> getClienteDNI(@PathVariable String dni) {
         Cliente cliente = clienteService.findByDni(dni);
         return new ResponseEntity<>(cliente, HttpStatus.OK);
@@ -83,7 +83,7 @@ public class ClienteController {
             @ApiResponse(responseCode = "404", description = "El Cliente no existe", content = @Content(schema = @Schema(implementation =
                     Cliente.class)))})
 
-    @PutMapping(value = "/cliente/{dni}",produces = "application/json",
+    @PutMapping(value = "/clienteModificar/{dni}",produces = "application/json",
             consumes = "application/json" )
 
     public ResponseEntity<Cliente> modifyClient(@PathVariable String dni,@RequestBody Cliente clienteModificado){
@@ -100,6 +100,7 @@ public class ClienteController {
             @ApiResponse(responseCode = "404",description = "El Cliente no existe",content = @Content(schema = @Schema(implementation = Response.class)))
     })
     @DeleteMapping(value = "/cliente-{id}",produces = "application/json")
+
     public void deleteClient(@PathVariable long id){clienteService.deleteCliente(id);}
 
     //ELIMINAR CLIENTE POR DNI
@@ -109,6 +110,6 @@ public class ClienteController {
             @ApiResponse(responseCode = "200",description = "Se elimina el Cliente",content = @Content(schema = @Schema(implementation = Response.class))),
             @ApiResponse(responseCode = "404",description = "El Cliente no existe",content = @Content(schema = @Schema(implementation = Response.class)))
     })
-    @DeleteMapping(value = "/cliente-{dni}",produces = "application/json")
+    @DeleteMapping(value = "/clienteEliminar/{dni}",produces = "application/json")
     public void deleteClientDNI(@PathVariable String dni){clienteService.deleteByDni(dni);}
 }

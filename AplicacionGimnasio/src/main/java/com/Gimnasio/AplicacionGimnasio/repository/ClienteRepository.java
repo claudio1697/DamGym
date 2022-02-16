@@ -14,9 +14,9 @@ public interface ClienteRepository extends CrudRepository<Cliente,Long> {
 
     Set<Cliente> findAll();
 
-    @Transactional
-    @Modifying
-    @Query("delete from Cliente c where c.dni = ?1")
+  //  @Transactional
+    //@Modifying
+    //@Query("delete from Cliente c where c.dni = ?1")
     void deleteByDni(String dni);
 
 

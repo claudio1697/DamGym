@@ -11,6 +11,7 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -49,9 +50,9 @@ public class ReservaController {
                 System.out.println("LIMITE DE RESERVAS ES:" + reserva.getClase().getCapacidad());
                 return new ResponseEntity<>(reservaAnyadida, HttpStatus.OK);
             } else {
-                Reserva aux = new Reserva(-1L,null,null,null,null);
-                return new ResponseEntity<>(aux,HttpStatus.OK);
-
+              //  Reserva aux = new Reserva(1L,null,null,null,null);
+               // return new ResponseEntity<>(aux,HttpStatus.OK);
+return null;
             }
         }else{
             Reserva reservaAnyadida = reservaService.anyadirReservaBD(reserva);
