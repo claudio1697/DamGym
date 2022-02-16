@@ -2,19 +2,17 @@ package com.Gimnasio.AplicacionGimnasio.domain;
 
 
 import com.Gimnasio.AplicacionGimnasio.EntityResolver.EntityIdResolver;
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import org.hibernate.Hibernate;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 
 /**
@@ -25,7 +23,9 @@ import java.util.List;
 @RequiredArgsConstructor
 @AllArgsConstructor
 @Repository
-@Entity(name = "clase")
+@ToString
+@Entity
+@Table(name = "clase")
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "id_clase",
@@ -51,6 +51,7 @@ public class Clase {
     private String descripcion;
 
     @OneToMany(mappedBy = "clase", orphanRemoval = true, cascade = CascadeType.ALL)
+    @ToString.Exclude
     private List<Reserva> reservas = new ArrayList<>();
 
 ///QUIZA HAYA ERROR// @SERGIOABDOMINALES
@@ -61,15 +62,24 @@ public class Clase {
         return capacidad;
     }
 
-    public void setCapacidad(int capacidad) {
-        this.capacidad = capacidad;
-    }
-
     public Long getId_clase() {
         return id_clase;
     }
 
     public void setId_clase(Long id_clase) {
         this.id_clase = id_clase;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        Clase clase = (Clase) o;
+        return id_clase != null && Objects.equals(id_clase, clase.id_clase);
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
     }
 }

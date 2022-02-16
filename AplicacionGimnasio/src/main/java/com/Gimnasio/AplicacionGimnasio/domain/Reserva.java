@@ -1,26 +1,25 @@
 package com.Gimnasio.AplicacionGimnasio.domain;
 
 
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import org.springframework.format.annotation.DateTimeFormat;
+import lombok.*;
+import org.hibernate.Hibernate;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.*;
 import java.time.LocalTime;
 import java.util.Date;
+import java.util.Objects;
 
 @AllArgsConstructor
 @Getter
 @Setter
 @RequiredArgsConstructor
 @Repository
-@Entity(name="reserva")
+@ToString
+@Entity
+@Table(name="reserva")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Reserva {
 
@@ -39,10 +38,12 @@ public class Reserva {
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "clase_id")
+    @ToString.Exclude
     private Clase clase;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "cliente_id")
+    @ToString.Exclude
     private Cliente cliente;
 
 
@@ -79,5 +80,18 @@ public class Reserva {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        Reserva reserva = (Reserva) o;
+        return id != null && Objects.equals(id, reserva.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
     }
 }

@@ -2,23 +2,22 @@ package com.Gimnasio.AplicacionGimnasio.domain;
 
 
 import com.Gimnasio.AplicacionGimnasio.EntityResolver.EntityIdResolver;
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import org.hibernate.Hibernate;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @AllArgsConstructor
 @Getter
 @Setter
 @RequiredArgsConstructor
+@ToString
 @Entity
 @Table(name="cliente")
 @JsonIdentityInfo(
@@ -45,6 +44,7 @@ public class Cliente {
     private int telefono;
 
     @OneToMany(mappedBy = "cliente", orphanRemoval = true, cascade = CascadeType.PERSIST)
+    @ToString.Exclude
     private List<Reserva> reservas = new ArrayList<>();
 
 ////////RELACIONES COMENTADAS POR ERROR/////////
@@ -69,5 +69,18 @@ public class Cliente {
 
     public void setDni(String dni) {
         this.dni = dni;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        Cliente cliente = (Cliente) o;
+        return id != null && Objects.equals(id, cliente.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
     }
 }
