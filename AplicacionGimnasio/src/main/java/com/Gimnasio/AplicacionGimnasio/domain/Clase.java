@@ -17,6 +17,7 @@ import java.util.Objects;
 
 /**
  * class que contiene las Clases del gimnasio
+ * @Params ubicación, nombre monitor capacidad(int) description
  */
 @Getter
 @Setter

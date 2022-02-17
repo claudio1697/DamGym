@@ -13,6 +13,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * class que contiene los clientes del gimnasio
+ * @Params dni, nombre apellidos direccion telefono
+ */
+
 @AllArgsConstructor
 @Getter
 @Setter
