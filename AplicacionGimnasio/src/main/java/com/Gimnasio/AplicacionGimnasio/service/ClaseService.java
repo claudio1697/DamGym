@@ -21,11 +21,11 @@ public interface ClaseService {
 
     // BORRAR CLASES
     long deleteByNombre(String nombre);
-
+    //BUSQUEDA POR NOMBRE
     Clase findByNombre(String nombre);
-
+    //COMPRUEBA SI EXISTE LA CLASE EN LA TABLA RESERVA
     boolean existsByReservas_Clase_Capacidad(int id);
-
+    //BUSQUEDA EN RESERVA DE LA COLUMNA DE CLASE CAPACIDAD
     Integer findByReservas_Clase_Capacidad(int id);
 
 }

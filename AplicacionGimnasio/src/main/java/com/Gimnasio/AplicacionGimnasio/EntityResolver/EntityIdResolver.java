@@ -5,7 +5,8 @@ import com.fasterxml.jackson.annotation.ObjectIdResolver;
 
 import javax.persistence.EntityManager;
 
-
+//Esta clase coge el ID que se inserta y busca toda la informacion de ese ID
+// de la Clase Y de Cliente si existe.
 public class EntityIdResolver
         implements ObjectIdResolver {
 
@@ -30,13 +31,13 @@ public class EntityIdResolver
 
         return this.entityManager.find(id.scope, id.key);
     }
-
+    //Si funciona devuelve la clase con todas las cosas
     @Override
     public ObjectIdResolver newForDeserialization(final Object context) {
 
         return this;
     }
-
+    //Si no funciona da falso
     @Override
     public boolean canUseFor(final ObjectIdResolver resolverType) {
 

@@ -23,7 +23,7 @@ public class ClaseController {
     @Autowired
     private ClaseService claseService;
 
-   //Anyadiendo el @Operation calaudio
+   //Anyadiendo el @Operation claudio
     @Operation(summary = "Registro de nueva Clase en la app")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Se registra la clase", content = @Content(schema =  @Schema(implementation = Clase.class)))

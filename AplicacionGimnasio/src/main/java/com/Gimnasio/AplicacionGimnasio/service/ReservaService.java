@@ -25,14 +25,14 @@ public interface ReservaService {
 
     //ELIMINAR RESERVA
     void deleteReserva(long id);
-
+    //COMPRUEBA SI EXISTE EL ID
     boolean existsByIdIsNull();
-
+    //CUENTA POR LA ID DE CLASE QUE ESTA EN RESERVA
     long countByClase_Reservas_Id(long id);
-
+    //CUENTA POR EL ID DEL CLIENTE
     long countByCliente_Id(long id);
 
-
+    //CUENTA POR HORA Y POR FECHA
     long countDistinctByFechaAndHora(Date fecha, LocalTime hora);
 
 

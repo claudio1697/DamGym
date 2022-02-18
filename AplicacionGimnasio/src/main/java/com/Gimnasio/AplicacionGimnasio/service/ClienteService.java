@@ -23,6 +23,6 @@ public interface ClienteService {
 
     //Encontrar por DNI
     Cliente findByDni(String dni);
-
+    //BORRAR POR DNI
     void deleteByDni(String dni);
 }

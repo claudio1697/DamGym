@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+//Clase GymConfig que abre la pagina del Swagger.
 @Configuration
 @EnableTransactionManagement
 public class GymConfig {

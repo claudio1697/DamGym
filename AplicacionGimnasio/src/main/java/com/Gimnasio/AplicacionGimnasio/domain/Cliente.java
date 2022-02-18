@@ -5,6 +5,7 @@ import com.Gimnasio.AplicacionGimnasio.EntityResolver.EntityIdResolver;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
 import org.hibernate.Hibernate;
 
@@ -25,27 +26,36 @@ import java.util.Objects;
 @ToString
 @Entity
 @Table(name="cliente")
+//Uso de la clase EntityIDResolver que coge el id de esta clase
+//y permite mostrar los datos en el json
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "id",
         resolver = EntityIdResolver.class,
         scope=Cliente.class)
+//Esto arregla el json que sale {hibernateLazyInitializer} sin tener que salir
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Cliente {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Schema(description ="Identificador de la Cliente", example = "1",required = true)
     private Long id;
 
     @Column
+    @Schema(description ="Segundo identificador de la Cliente", example = "8954512X")
     private String dni;
     @Column
+    @Schema(description ="Nombre del Cliente", example = "Juan")
     private String nombre;
     @Column
+    @Schema(description = "Apellidos del Cliente", example = "Pablo Juanito")
     private String apellidos;
     @Column
+    @Schema(description = "Direccion del sitio de donde vive el Cliente", example = "calle arriba españa")
     private String direccion;
     @Column
+    @Schema(description = "Contacto del Cliente", example = "6969696969")
     private int telefono;
 
     @OneToMany(mappedBy = "cliente", orphanRemoval = true, cascade = CascadeType.PERSIST)

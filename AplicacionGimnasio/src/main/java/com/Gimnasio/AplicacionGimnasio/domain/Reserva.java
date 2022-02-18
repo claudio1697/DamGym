@@ -3,6 +3,7 @@ package com.Gimnasio.AplicacionGimnasio.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
 import org.hibernate.Hibernate;
 import org.springframework.stereotype.Repository;
@@ -20,19 +21,26 @@ import java.util.Objects;
 @ToString
 @Entity
 @Table(name="reserva")
+//Esto arregla el json que sale {hibernateLazyInitializer} sin tener que salir
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Reserva {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "codReserva", nullable = false)
+    @Schema(description ="Identificador de la Reserva", example = "1", required = true)
     private Long id;
     @Column
+    //El JSON no detectaba el formato de la fecha.
+    //Añadiendo @Temporal y el tipo TIMESTAMP hace que se vean.
     @Temporal(TemporalType.TIMESTAMP)
+    @Schema(description ="Fecha que hay disponible la reserva", example = "2022-02-16")
     private Date fecha;
 
     @Column
+    //Esto settea el formato que hay para insertar
     @JsonFormat(pattern = "HH:mm:ss")
+    @Schema(description ="Hora a la que se hace la reserva", example = "18:00:00")
     private LocalTime hora;
 
 
