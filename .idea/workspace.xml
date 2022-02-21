@@ -4,7 +4,34 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8496399a-6bb3-4233-ba94-0f277ce4460e" name="Default Changelist" comment="" />
+    <list default="true" id="8496399a-6bb3-4233-ba94-0f277ce4460e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AplicacionGimnasio/target/classes/com/Gimnasio/AplicacionGimnasio/AplicacionGimnasioApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AplicacionGimnasio/target/classes/com/Gimnasio/AplicacionGimnasio/controller/ClaseController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AplicacionGimnasio/target/classes/com/Gimnasio/AplicacionGimnasio/controller/ClienteController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AplicacionGimnasio/target/classes/com/Gimnasio/AplicacionGimnasio/controller/ReservaController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AplicacionGimnasio/target/classes/com/Gimnasio/AplicacionGimnasio/controller/Response$Error.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AplicacionGimnasio/target/classes/com/Gimnasio/AplicacionGimnasio/controller/Response.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AplicacionGimnasio/target/classes/com/Gimnasio/AplicacionGimnasio/domain/Clase.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AplicacionGimnasio/target/classes/com/Gimnasio/AplicacionGimnasio/domain/Cliente.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AplicacionGimnasio/target/classes/com/Gimnasio/AplicacionGimnasio/domain/Reserva.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AplicacionGimnasio/target/classes/com/Gimnasio/AplicacionGimnasio/excepcion/claseNotFoundException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AplicacionGimnasio/target/classes/com/Gimnasio/AplicacionGimnasio/excepcion/clienteNotFoundExcepcion.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AplicacionGimnasio/target/classes/com/Gimnasio/AplicacionGimnasio/excepcion/reservaNotFoundExcepcion.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AplicacionGimnasio/target/classes/com/Gimnasio/AplicacionGimnasio/repository/ClaseRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AplicacionGimnasio/target/classes/com/Gimnasio/AplicacionGimnasio/repository/ClienteRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AplicacionGimnasio/target/classes/com/Gimnasio/AplicacionGimnasio/repository/ReservaRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AplicacionGimnasio/target/classes/com/Gimnasio/AplicacionGimnasio/service/ClaseService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AplicacionGimnasio/target/classes/com/Gimnasio/AplicacionGimnasio/service/ClaseServiceImp.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AplicacionGimnasio/target/classes/com/Gimnasio/AplicacionGimnasio/service/ClienteService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AplicacionGimnasio/target/classes/com/Gimnasio/AplicacionGimnasio/service/ClienteServiceImp.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AplicacionGimnasio/target/classes/com/Gimnasio/AplicacionGimnasio/service/ReservaService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AplicacionGimnasio/target/test-classes/com/Gimnasio/AplicacionGimnasio/AplicacionGimnasioApplicationTests.class" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -38,7 +65,28 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="dart.analysis.tool.window.visible" value="false" />
+  </component>
+  <component name="RunManager">
+    <configuration name="AplicacionGimnasioApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.Gimnasio.AplicacionGimnasio.AplicacionGimnasioApplication" />
+      <module name="AplicacionGimnasio" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.Gimnasio.AplicacionGimnasio.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.AplicacionGimnasioApplication" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
