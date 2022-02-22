@@ -8,11 +8,16 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-//Clase GymConfig que abre la pagina del Swagger.
+/**
+ * Clase Config que nos hace link con el Swagger.ui
+ */
 @Configuration
 @EnableTransactionManagement
 public class GymConfig {
-
+    /**
+     * Nos devuelve la pagina
+     * @return
+     */
     @Bean
     public OpenAPI customOpenApi(){
         return new OpenAPI()

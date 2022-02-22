@@ -30,12 +30,12 @@ public class ReservaController {
     private static int capacidad;
     private Clase clase;
 
-    //Anyadiendo el @Operation calaudio
+
     @Operation(summary = "Registro de nueva Reserva en la app")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Se registra la reserva", content = @Content(schema = @Schema(implementation = Reserva.class)))
     })
-    //He hecho esto  @Sergio
+
     // RESERVA
     // OBTENER TODAS LAS CLASES
     // ANYADIR RESERVA (POST)
@@ -44,15 +44,14 @@ public class ReservaController {
 
         if(!reservaService.existsByIdIsNull()) {
             long num = reservaService.countDistinctByFechaAndHora(reserva.getFecha(), reserva.getHora());
-            if (num < reserva.getClase().getCapacidad()) {
+            if (num < reserva.getClase().getCapacidad()-1) {
                 Reserva reservaAnyadida = reservaService.anyadirReservaBD(reserva);
                 System.out.println("EL NUMERO DE RESERVAD HECHAS A ESTA CLASE: " + num);
                 System.out.println("LIMITE DE RESERVAS ES:" + reserva.getClase().getCapacidad());
                 return new ResponseEntity<>(reservaAnyadida, HttpStatus.OK);
             } else {
-              //  Reserva aux = new Reserva(1L,null,null,null,null);
-               // return new ResponseEntity<>(aux,HttpStatus.OK);
-return null;
+               Reserva aux = new Reserva(1L,null,null,null,null);
+               return new ResponseEntity<>(aux,HttpStatus.OK);
             }
         }else{
             Reserva reservaAnyadida = reservaService.anyadirReservaBD(reserva);
@@ -60,7 +59,7 @@ return null;
         }
     }
 
-        //Anyadiendo el @Operation calaudio
+
         @Operation(summary = "Obtiene lista de las reservas")
         @ApiResponses(value = {
                 @ApiResponse(responseCode = "200", description = "Listado de reserva", content = @Content(array = @ArraySchema(schema = @Schema(implementation = Reserva.class))))
@@ -73,7 +72,7 @@ return null;
             reserva = reservaService.findAll();
             return new ResponseEntity<>(reserva, HttpStatus.OK);
         }
-        //Anyadiendo el @Operation calaudio
+
         @Operation(summary = "Obtiene una reserva determinada")
         @ApiResponses(value = {
                 @ApiResponse(responseCode = "200", description = "Existe la reserva", content = @Content(schema = @Schema(implementation = Reserva.class))),
@@ -87,7 +86,7 @@ return null;
             return new ResponseEntity<>(reserva, HttpStatus.OK);
         }
 
-        //Anyadiendo el @Operation calaudio
+
         @Operation(summary = "Modifica una reserva")
         @ApiResponses(value = {
                 @ApiResponse(responseCode = "200", description = "Se modifico una reserva", content = @Content(schema = @Schema(implementation = Reserva.class))),
@@ -102,7 +101,7 @@ return null;
             Reserva reserva = reservaService.modificarReserva(id, newReserva);
             return new ResponseEntity<>(reserva, HttpStatus.OK);
         }
-        //Anyadiendo el @Operation calaudio
+
         @Operation(summary = "Elimina una reserva")
         @ApiResponses(value = {
                 @ApiResponse(responseCode = "200", description = "Se elimina una reserva", content = @Content(schema = @Schema(implementation = Reserva.class))),

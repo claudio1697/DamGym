@@ -8,8 +8,8 @@ public class claseNotFoundException extends RuntimeException{
     public claseNotFoundException(String message) {
         super(message);
     }
-    public claseNotFoundException(long id_cliente) {
-        super("Clase not found: " + id_cliente);
+    public claseNotFoundException(long id_clase) {
+        super("Clase not found: " + id_clase);
     }
 
 }

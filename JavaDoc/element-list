@@ -1,0 +1,8 @@
+com.Gimnasio.AplicacionGimnasio
+com.Gimnasio.AplicacionGimnasio.config
+com.Gimnasio.AplicacionGimnasio.controller
+com.Gimnasio.AplicacionGimnasio.domain
+com.Gimnasio.AplicacionGimnasio.EntityResolver
+com.Gimnasio.AplicacionGimnasio.excepcion
+com.Gimnasio.AplicacionGimnasio.repository
+com.Gimnasio.AplicacionGimnasio.service

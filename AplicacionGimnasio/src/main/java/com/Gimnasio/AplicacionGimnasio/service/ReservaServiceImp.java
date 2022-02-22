@@ -32,7 +32,7 @@ public class ReservaServiceImp implements ReservaService {
         nueboReserva.setId(reserva.getId());
         return reservaRepository.save(nueboReserva);
     }
-    // Metodo de busqueda por ID @Claudio
+
     @Override
     public Optional<Reserva> findById(long id){
         return reservaRepository.findById(id);
@@ -44,7 +44,7 @@ public class ReservaServiceImp implements ReservaService {
         reservaRepository.findById(id)
                 .orElseThrow(() -> new reservaNotFoundExcepcion(id, HttpStatus.NOT_FOUND));
         reservaRepository.deleteById(id);
-    }//Aqui termina los cambios que he realizado @Claudio
+    }
 
     //Metodo que coje las reservas que hay en clase.
     @Override

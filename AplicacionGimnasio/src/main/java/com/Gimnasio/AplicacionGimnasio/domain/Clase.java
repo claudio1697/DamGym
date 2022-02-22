@@ -30,6 +30,7 @@ import java.util.Objects;
 @Table(name = "clase")
 //Uso de la clase EntityIDResolver que coge el id de esta clase
 //y permite mostrar los datos en el json
+//Como un get de PostMan
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "id_clase",
@@ -66,10 +67,6 @@ public class Clase {
     @ToString.Exclude
     private List<Reserva> reservas = new ArrayList<>();
 
-///QUIZA HAYA ERROR// @SERGIOABDOMINALES
-//////////RELACIONES COMENTADAS POR POSIBLE ERROR//////////
-
-
     public int getCapacidad() {
         return capacidad;
     }
@@ -81,7 +78,8 @@ public class Clase {
     public void setId_clase(Long id_clase) {
         this.id_clase = id_clase;
     }
-
+    //Esto lo puse pk sirve y parece el codigo mas poderoso.
+    //Comprobacion de si coincide el parametro a introducir con el que se quiere modificar
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -89,7 +87,8 @@ public class Clase {
         Clase clase = (Clase) o;
         return id_clase != null && Objects.equals(id_clase, clase.id_clase);
     }
-
+    //Comprobacion de que los datos que la clase esta contiene bien las variables que
+    //se van a meter, devolviendo false si mal y true si bien.
     @Override
     public int hashCode() {
         return getClass().hashCode();

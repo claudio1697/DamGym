@@ -62,12 +62,6 @@ public class Cliente {
     @ToString.Exclude
     private List<Reserva> reservas = new ArrayList<>();
 
-////////RELACIONES COMENTADAS POR ERROR/////////
-    //Variable emf que se encarga de organizar las relaciones
- //   private static EntityManagerFactory emf;
-    //Relacion de 1 a muchos de clientes a Reserva
-
-
 
     public Long getId() {
         return id;

@@ -37,13 +37,13 @@ public class ClaseServiceImp implements ClaseService {
     public Clase anyadirClaseBD(Clase clase) {
         return claseRepository.save(clase);
     }
-    //He añadido el metodo modificar Clase @Sergio
+
 
     @Override
     public Clase modificarClase(long id_clase, Clase nuevaClase) {
 
         Clase clase = claseRepository.findById(id_clase).orElseThrow(() -> new claseNotFoundException(id_clase));
-        // nuevaClase.setId_clase(clase.getId_clase());
+
         nuevaClase.setId_clase(clase.getId_clase());
 
         return claseRepository.save(nuevaClase);

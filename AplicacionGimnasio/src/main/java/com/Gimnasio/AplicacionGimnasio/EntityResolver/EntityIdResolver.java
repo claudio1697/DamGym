@@ -23,7 +23,6 @@ public class EntityIdResolver
     public void bindItem(
             final ObjectIdGenerator.IdKey id,
             final Object pojo) {
-
     }
 
     @Override

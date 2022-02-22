@@ -7,7 +7,8 @@ public class capacidadReservaExcepcion extends  Exception{
     public capacidadReservaExcepcion(String message) {
         super(message);
     }
-    public capacidadReservaExcepcion(int id_cliente) {
-        super("Clase not found: " + id_cliente);
+    public capacidadReservaExcepcion(int capacidad) {
+        super("Clase not found: " + capacidad);
     }
+
 }

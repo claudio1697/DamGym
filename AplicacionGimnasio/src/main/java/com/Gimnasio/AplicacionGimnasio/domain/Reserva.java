@@ -89,7 +89,7 @@ public class Reserva {
     public void setId(Long id) {
         this.id = id;
     }
-
+    //Comprobaciones para ver si coincide con la reserva o no.
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
